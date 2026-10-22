@@ -1,0 +1,29 @@
+/* =====================================================
+   Accessibility
+   ===================================================== */
+
+/* ----------------------------------------
+   Reduced Motion
+   Schaltet CSS-Transitions und -Animationen ab,
+   wenn im System "Bewegung reduzieren" aktiv ist.
+   GSAP-Animationen sind davon nicht betroffen
+   (Reveal und Bouncy Tabs prüfen es selbst).
+---------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Reveal-Elemente sofort zeigen (JS animiert hier nicht) */
+  [split-letter],
+  [split-lines],
+  [fade-block] {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}

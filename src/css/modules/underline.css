@@ -1,0 +1,32 @@
+/* =====================================================
+   Underline – Navigation & Footer
+   Animierte Unterstreichung via GSAP. Die Linie
+   (.underline-line) wird per JS erzeugt und ist beim
+   aktiven Nav-Link dauerhaft sichtbar.
+   JS: modules/nav-underline.js, modules/footer-underline.js
+   ===================================================== */
+
+.nav-link-txt,
+.nav-link-txt-transparent,
+.footer-link {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.underline-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+/* Linie dauerhaft sichtbar für aktive Links */
+.nav-link.w--current .nav-link-txt .underline-line,
+.nav-link-transparent.w--current .nav-link-txt-transparent .underline-line {
+  transform: scaleX(1);
+}

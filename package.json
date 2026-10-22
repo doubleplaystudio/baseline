@@ -1,0 +1,15 @@
+{
+  "name": "baseline",
+  "version": "1.0.0",
+  "description": "Baseline – globales Webflow-Framework von Double Play Studio",
+  "private": true,
+  "scripts": {
+    "build": "npm run build:js && npm run build:css",
+    "build:js": "esbuild src/index.js --bundle --format=iife --minify --legal-comments=none --target=es2019 --sourcemap --outfile=dist/baseline.min.js",
+    "build:css": "esbuild src/css/index.css --bundle --minify --legal-comments=none --outfile=dist/baseline.min.css",
+    "watch": "esbuild src/index.js --bundle --format=iife --sourcemap --outfile=dist/baseline.min.js --watch"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.0"
+  }
+}

@@ -1,0 +1,25 @@
+/* =====================================================
+   Copy Email – Hover, Focus & Copied
+   JS: modules/copy-email.js
+   ===================================================== */
+
+@media (hover: hover) {
+  .copy-email-button:hover .copy-email-icon__wrap {
+    background: rgba(48, 48, 48, 0.9);
+  }
+  .copy-email-button:hover .copy-email-text__el {
+    transform: translate(0px, -100%);
+  }
+}
+
+/* Keyboard-Focus */
+.copy-email-button:focus .copy-email-icon__wrap {
+  background: rgba(48, 48, 48, 0.9);
+}
+.copy-email-button:focus .copy-email-text__el {
+  transform: translate(0px, -100%);
+}
+
+/* Copied-Zustand nach Klick */
+[data-copy-button="copied"] .copy-email-icon__wrap { background: #002bba !important; }
+[data-copy-button="copied"] .copy-email-text__el { transform: translate(0px, -200%) !important; }

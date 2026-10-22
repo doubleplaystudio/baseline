@@ -1,0 +1,18 @@
+/* =====================================================
+   Bouncy Tabs
+   JS: modules/bouncy-tabs.js
+   ===================================================== */
+
+[data-bouncy-tabs-button][data-active] {
+  color: #0171e3;
+}
+
+[data-bouncy-tabs-panel]:not([data-active]) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Im Designer das aktive Panel normal im Fluss zeigen */
+.wf-design-mode [data-bouncy-tabs-panel][data-active] {
+  position: relative;
+}

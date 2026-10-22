@@ -1,0 +1,108 @@
+/* =====================================================
+   Flickity – Static Slider
+   Layout und Sichtbarkeit. Bei zu wenigen Slides wird
+   Flickity per CSS abgeschaltet (watchCSS liest das
+   ::after "flickity"). Pfeile und Dots passen sich an.
+   Spalten/Gap pro Breakpoint: --flick-col / --flick-gap
+   JS: modules/flickity.js
+   ===================================================== */
+
+/* Flickity aktiv: list als Block */
+[data-flickity-status="active"] [data-flickity-list]::after {
+  content: "flickity";
+  display: none;
+}
+
+[data-flickity-status="active"] [data-flickity-list] {
+  display: block;
+}
+
+[data-flickity-list] .flickity-viewport {
+  overflow: visible;
+  width: 100%;
+}
+
+/* Deaktivierte Navigations-Buttons ausblenden */
+[data-flickity-control][disabled] {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Aktiver Dot */
+[data-flickity-dot="active"] {
+  background-color: #131313;
+}
+
+/* Desktop: 3 Spalten – Flickity OFF ab ≤3 Slides */
+@media screen and (min-width: 992px) {
+  [data-flickity-type="cards"] {
+    --flick-col: 3;
+    --flick-gap: 2em;
+  }
+
+  [data-flickity-type="cards"]:is([data-flickity-count="1"], [data-flickity-count="2"], [data-flickity-count="3"]) [data-flickity-list]::after {
+    content: "";
+    display: block;
+  }
+
+  [data-flickity-type="cards"]:is([data-flickity-count="1"], [data-flickity-count="2"], [data-flickity-count="3"]) [data-flickity-list] {
+    display: flex;
+  }
+
+  [data-flickity-type="cards"]:is([data-flickity-count="1"], [data-flickity-count="2"], [data-flickity-count="3"]) [data-flickity-controls] {
+    display: none;
+  }
+
+  /* Letzte zwei Dots ausblenden */
+  [data-flickity-type="cards"] [data-flickity-dot]:nth-last-child(-n+2) {
+    display: none;
+  }
+}
+
+/* Tablet: 2.5 Spalten – Flickity OFF ab ≤2 Slides */
+@media (min-width: 768px) and (max-width: 991px) {
+  [data-flickity-type="cards"] {
+    --flick-col: 2.5;
+    --flick-gap: 1.5em;
+  }
+
+  [data-flickity-type="cards"]:is([data-flickity-count="1"], [data-flickity-count="2"]) [data-flickity-list]::after {
+    content: "";
+    display: block;
+  }
+
+  [data-flickity-type="cards"]:is([data-flickity-count="1"], [data-flickity-count="2"]) [data-flickity-list] {
+    display: flex;
+  }
+
+  [data-flickity-type="cards"]:is([data-flickity-count="1"], [data-flickity-count="2"]) [data-flickity-controls] {
+    display: none;
+  }
+
+  /* Letzten Dot ausblenden */
+  [data-flickity-type="cards"] [data-flickity-dot]:nth-last-child(1) {
+    display: none;
+  }
+}
+
+/* Mobile: 1 Spalte – Flickity OFF ab 1 Slide */
+@media screen and (max-width: 767px) {
+  [data-flickity-type="cards"] {
+    --flick-col: 1;
+    --flick-gap: 1em;
+  }
+
+  [data-flickity-type="cards"]:is([data-flickity-count="1"]) [data-flickity-list]::after {
+    content: "";
+    display: block;
+  }
+
+  [data-flickity-type="cards"]:is([data-flickity-count="1"]) [data-flickity-list] {
+    display: flex;
+  }
+
+  [data-flickity-type="cards"]:is([data-flickity-count="1"]) [data-flickity-controls] {
+    display: none;
+  }
+}

@@ -1,0 +1,43 @@
+<!-- =====================================================
+   BASELINE – Embed in der globalen Component (liegt auf jeder Seite)
+   Bleibt in Webflow, weil der Designer nur Embeds rendert,
+   keinen Head-/Footer-Code. Hier nur, was im Canvas sichtbar
+   sein muss. Referenzkopie – die Wahrheit liegt in Webflow.
+   ===================================================== -->
+<style>
+  .global-body {
+    overflow-x: hidden;
+  }
+
+  .page-transition {
+    transform: translateY(0%); /* Startzustand: deckt Seite ab, bis JS übernimmt */
+  }
+
+  .global-headline-l  { font-size: clamp(2.5rem, 4vw, 4rem); }           /* 40 → 64 */
+  .global-headline-m  { font-size: clamp(2rem, 3vw, 3rem); }             /* 32 → 48 */
+  .global-headline-s  { font-size: clamp(1.5rem, 2.2vw, 2rem); }         /* 24 → 32 */
+  .global-headline-xs { font-size: clamp(1.25rem, 1.6vw, 1.5rem); }      /* 20 → 24 */
+
+  .copytext {
+    font-size: clamp(1rem, 0.9286rem + 0.1488vw, 1.0625rem); /* 16px @768 → 17px @1440 */
+  }
+
+  .copytext-small {
+    font-size: clamp(0.875rem, 1vw, 1rem); /* 14 → 16 */
+  }
+
+  .nav-link-txt,
+  .nav-link-txt-transparent,
+  .copy-email-text__wrap,
+  .footer-link,
+  .footer-txt,
+  .button-txt {
+    font-size: clamp(0.9375rem, 0.9vw, 0.9375rem); /* 15px fix */
+  }
+
+  /* Platz für Unterlängen bei SplitText-Masken */
+  .line-mask {
+    padding-bottom: 0.1em;
+    margin-bottom: -0.1em;
+  }
+</style>

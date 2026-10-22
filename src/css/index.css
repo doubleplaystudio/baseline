@@ -1,0 +1,34 @@
+/* =====================================================
+   BASELINE – GLOBAL STYLES
+   by Double Play Studio
+
+   Aufbau:
+     1. Base             Page Transition, Loader
+     2. Module           gleiche Namen wie in src/modules/
+     3. Vendor-Overrides Swiper, Flickity, Bunny
+     4. Accessibility    Reduced Motion
+
+   Neues Modul-CSS: Datei in css/modules/ anlegen und hier importieren.
+   Hinweis: kein @layer verwenden – Webflows CSS ist ungelayert
+   und würde gelayerte Regeln immer überstimmen.
+   ===================================================== */
+
+/* 1. Base */
+@import "./base.css";
+
+/* 2. Module */
+@import "./modules/underline.css";
+@import "./modules/tab-checkbox.css";
+@import "./modules/forms.css";
+@import "./modules/modal.css";
+@import "./modules/reveal.css";
+@import "./modules/copy-email.css";
+@import "./modules/bouncy-tabs.css";
+
+/* 3. Vendor-Overrides */
+@import "./vendor/swiper.css";
+@import "./vendor/flickity.css";
+@import "./vendor/bunny.css";
+
+/* 4. Accessibility – immer zuletzt */
+@import "./a11y.css";

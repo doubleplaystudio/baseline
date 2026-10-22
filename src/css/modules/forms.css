@@ -1,0 +1,66 @@
+/* =====================================================
+   Forms – Validation
+   JS: modules/forms.js
+   ===================================================== */
+
+/* ----------------------------------------
+   Fehlerzustand
+   Rote Border und Error-Icon für ungültige
+   Felder (Input, Textarea, Select, Radio/Checkbox).
+---------------------------------------- */
+[data-validate].is--error input,
+[data-validate].is--error textarea,
+[data-validate].is--error select {
+  border-color: #FF4C24;
+}
+
+[data-validate].is--error .form-field-icon.is--error,
+[data-validate].is--error .radiocheck-field-icon.is--error {
+  opacity: 1;
+}
+
+/* ----------------------------------------
+   Erfolgszustand
+   Success-Icon, sobald ein Feld valide ist.
+---------------------------------------- */
+[data-validate].is--success .form-field-icon.is--success,
+[data-validate].is--success .radiocheck-field-icon.is--success {
+  opacity: 1;
+}
+
+/* ----------------------------------------
+   Custom Radio & Checkbox
+   Focus- und Checked-Zustände. Im Fehlerzustand
+   wird die Box rot, außer sie ist gecheckt.
+---------------------------------------- */
+[data-form-validate] .radiocheck-field input:focus-visible ~ .radiocheck-custom {
+  background-color: #D0CFCD;
+  color: #E2E1DF;
+}
+
+[data-form-validate] .radiocheck-field input:focus-visible:checked ~ .radiocheck-custom,
+[data-form-validate] .radiocheck-field input:checked ~ .radiocheck-custom {
+  background-color: #131313;
+  color: #EFEEEC;
+}
+
+[data-form-validate] .radiocheck-field .radiocheck-label.is--small {
+  margin-top: 0.125em;
+}
+
+[data-validate].is--error .radiocheck-custom {
+  border-color: #FF4C24;
+}
+
+[data-validate].is--error input:checked ~ .radiocheck-custom {
+  border-color: #131313;
+}
+
+/* ----------------------------------------
+   Select Placeholder
+   Placeholder in reduzierter Opacity, solange
+   kein gültiger Wert ausgewählt ist.
+---------------------------------------- */
+[data-form-validate] select:has(option[value=""]:checked) {
+  color: rgba(19, 19, 19, 0.3);
+}

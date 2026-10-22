@@ -1,0 +1,39 @@
+/* =====================================================
+   Base
+   ===================================================== */
+
+/* ----------------------------------------
+   Page Transition
+   Vollflächiges Overlay, das per GSAP beim
+   Seitenwechsel ein- und ausfährt (translateY).
+   JS: modules/page-transition.js
+   Hinweis: Das Webflow-Embed setzt translateY(0%)
+   als Startzustand, damit die Seite bis zum JS
+   abgedeckt ist.
+---------------------------------------- */
+.page-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #121212;
+  transform: translateY(100%);
+  z-index: 101;
+  pointer-events: none;
+}
+
+/* ----------------------------------------
+   Loader
+   Versteckt den Loader im Webflow Designer.
+   Elemente mit [data-load-reset] starten
+   unsichtbar und werden per JS eingeblendet.
+   JS: modules/preloader.js
+---------------------------------------- */
+.wf-design-mode .loader {
+  display: none;
+}
+
+[data-load-reset] {
+  opacity: 0;
+}

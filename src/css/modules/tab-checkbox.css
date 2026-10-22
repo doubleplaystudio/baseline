@@ -1,0 +1,10 @@
+/* =====================================================
+   Tab Item – Checkbox
+   Sanfte Farbübergänge für aktive/inaktive
+   Tab-Zustände (Hintergrund & Textfarbe).
+   JS: modules/tab-checkbox.js
+   ===================================================== */
+
+.tab-item {
+  transition: background-color 200ms ease, color 200ms ease;
+}

@@ -1,0 +1,13 @@
+/* =====================================================
+   Reveal – Text & Block Animationen
+   Kein Aufblitzen vor dem Split. Im Designer bleibt
+   alles sichtbar, weil dort kein Custom Code läuft.
+   JS: modules/reveal.js
+   Reduced Motion: a11y.css
+   ===================================================== */
+
+[split-letter],
+[split-lines],
+[fade-block] {
+  visibility: hidden;
+}

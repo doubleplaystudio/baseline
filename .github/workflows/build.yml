@@ -1,0 +1,47 @@
+# Baut dist/ automatisch, sobald sich etwas in src/ ändert.
+# Du bearbeitest nur src/ – dist/ wird von hier aus committet.
+# Versions-Tags (v1.2.0 …) setzt du weiterhin selbst.
+
+name: Build
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "src/**"
+      - "package.json"
+      - "package-lock.json"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Commit dist
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dist
+          if git diff --cached --quiet; then
+            echo "dist ist aktuell – nichts zu committen."
+          else
+            git commit -m "build: dist aktualisiert"
+            git push
+          fi

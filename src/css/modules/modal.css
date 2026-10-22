@@ -1,0 +1,19 @@
+/* =====================================================
+   Modal – Overlay & Sichtbarkeit
+   Opacity/Visibility des Overlays und Anzeige
+   einzelner Modals per data-Attribut.
+   JS: modules/modal.js
+   ===================================================== */
+
+[data-modal-group-status] {
+  transition: all 0.2s linear;
+}
+
+[data-modal-group-status="active"] {
+  opacity: 1;
+  visibility: visible;
+}
+
+[data-modal-name][data-modal-status="active"] {
+  display: flex;
+}
