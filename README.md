@@ -151,6 +151,8 @@ Konsole öffnen. Scheitert ein Modul, steht dort `[Baseline] initXyz failed`, un
 3. **Release:** Tag setzen (Releases → „Draft a new release“ → Tag `v1.1.0`).
 4. Im Kundenprojekt die Version in **beiden** URLs (Head + Footer) hochsetzen, aber nur dort, wo du das Update willst.
 
+Jede Änderung wird im [`CHANGELOG.md`](CHANGELOG.md) dokumentiert. Jede Änderung bekommt ein eigenes Release.
+
 | Änderung | Version | Beispiel |
 |---|---|---|
 | Bugfix, keine Auswirkung auf bestehende Seiten | dritte Stelle | `1.0.0` → `1.0.1` |
