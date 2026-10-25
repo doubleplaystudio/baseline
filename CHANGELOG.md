@@ -11,6 +11,17 @@ Zum Zurückrollen in Webflow einfach die vorherige Versionsnummer in Head und Fo
 
 ---
 
+## [1.1.0] – 2026-10-25
+
+### Neu
+- Preloader: `data-load-mode="custom"` auf `[data-load-wrap]`. Baseline spielt dann keine eigene Loader-Animation ab, das Projekt bringt seinen eigenen Loader mit (z. B. Lottie, Video)
+- `window.Baseline.preloaderDone()`: startet alles mit `trigger="preloader"`. Wird vom Projekt-Code aufgerufen, sobald der eigene Loader rausfährt
+- Reveal: Sicherheitsnetz für `trigger="preloader"` per `data-load-timeout` (ms) auf dem Wrapper einstellbar, Default weiterhin 8000
+
+Bestehende Seiten verhalten sich unverändert.
+
+---
+
 ## [1.0.0] – 2026-10-22
 
 Erste Version im Repo. Der bisherige Custom Code aus Webflow ist in Module aufgeteilt.

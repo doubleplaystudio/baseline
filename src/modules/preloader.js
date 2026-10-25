@@ -10,6 +10,15 @@
      data-load-text       → zwei Texte, die nacheinander erscheinen
      data-load-reset      → Elemente, die bis zum Start unsichtbar sind (FOUC)
 
+   Eigener Loader (z. B. Lottie, Video) statt dieser Animation:
+     data-load-mode="custom"  → auf dem Wrapper. Baseline spielt keine
+                                eigene Timeline ab. Der Projekt-Code ruft
+                                window.Baseline.preloaderDone() auf, sobald
+                                der Loader rausfährt.
+     data-load-timeout="10000" → optional: Sicherheitsnetz in ms, nach dem
+                                trigger="preloader" spätestens startet
+                                (Default 8000, siehe reveal.js)
+
    Signal: Sobald der Hintergrund rausfährt, startet alles mit
    trigger="preloader" (siehe reveal.js, core/signals.js).
    CSS: css/base.css (Loader)
@@ -20,6 +29,7 @@ import { signalPreloaderLeaving } from "../core/signals.js";
 export function initLogoRevealLoader() {
   const wrap = document.querySelector("[data-load-wrap]");
   if (!wrap) return;
+  if (wrap.getAttribute("data-load-mode") === "custom") return; // Projekt-Code übernimmt
 
   CustomEase.create("loader", "0.65, 0.01, 0.05, 0.99");
 

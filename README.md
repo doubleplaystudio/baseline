@@ -16,10 +16,10 @@ Diese Single Source of Truth wird per jsDelivr in jedes Projekt geladen. Jedes P
 
 ```html
 <!-- Head -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/doubleplaystudio/baseline@1.0.0/dist/baseline.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/doubleplaystudio/baseline@1.1.0/dist/baseline.min.css">
 
 <!-- Footer, nach allen Libraries -->
-<script src="https://cdn.jsdelivr.net/gh/doubleplaystudio/baseline@1.0.0/dist/baseline.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/doubleplaystudio/baseline@1.1.0/dist/baseline.min.js"></script>
 ```
 
 > **Immer eine feste Version angeben** (`@1.0.0`), niemals `@latest` oder `@main`. Sonst kann ein Update für Projekt C unbemerkt Projekt A verändern.
@@ -48,6 +48,8 @@ Diese Single Source of Truth wird per jsDelivr in jedes Projekt geladen. Jedes P
 
 Ohne Preloader auf der Seite verhält sich `trigger="preloader"` wie `load`.
 
+**Eigener Loader statt Baseline-Animation** (z. B. Lottie): `data-load-mode="custom"` auf `[data-load-wrap]` setzen. Baseline spielt dann nichts ab, der Projekt-Code ruft `window.Baseline.preloaderDone()` auf, sobald der Loader rausfährt. Dauert der Loader länger als 8 s, zusätzlich `data-load-timeout="12000"` (ms) setzen.
+
 **Optional:** `data-delay="0.2"` (Sekunden, nur auf dem Element selbst).
 
 ```html
@@ -73,7 +75,7 @@ Ohne Preloader auf der Seite verhält sich `trigger="preloader"` wie `load`.
 | Flickity | `data-flickity-type="cards"`, `data-flickity-list`, `-item`, `-control`, `-dot`, `-desktop-cols` | `flickity.js` |
 | Jahr | `id="year"` | `footer-year.js` |
 | Modal | `data-modal-target`, `data-modal-name`, `data-modal-group-status`, `data-modal-close` | `modal.js` |
-| Preloader | `data-load-wrap`, `-container`, `-bg`, `-progress`, `-logo`, `-text`, `-reset` | `preloader.js` |
+| Preloader | `data-load-wrap`, `-container`, `-bg`, `-progress`, `-logo`, `-text`, `-reset`, `-mode="custom"`, `-timeout` | `preloader.js` |
 | Copy Email | `.copy-email-button`, `data-copy-email`, `data-copy-email-element` | `copy-email.js` |
 | Page Transition | `.page-transition` | `page-transition.js` |
 | Marquee | `data-draggable-marquee-init`, `-collection`, `-list`, `data-duration`, `data-direction` | `marquee.js` |

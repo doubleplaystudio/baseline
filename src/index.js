@@ -18,6 +18,7 @@
 
 import { onReady, run } from "./core/utils.js";
 import { REVEAL_SELECTOR } from "./core/constants.js";
+import { signalPreloaderLeaving } from "./core/signals.js";
 
 import { initLenis } from "./modules/lenis.js";
 import { initNavUnderline } from "./modules/nav-underline.js";
@@ -37,6 +38,17 @@ import { initCopyEmailClipboard } from "./modules/copy-email.js";
 import { initPageTransition } from "./modules/page-transition.js";
 import { initDraggableMarquee } from "./modules/marquee.js";
 import { initBouncyContentTabs } from "./modules/bouncy-tabs.js";
+
+
+/* -----------------------------------------------------
+   0. Öffentliche API (window.Baseline)
+   Für Projekt-Code, der nach Baseline geladen wird.
+     preloaderDone()  → startet alles mit trigger="preloader"
+                        (eigener Loader, data-load-mode="custom")
+----------------------------------------------------- */
+window.Baseline = Object.assign(window.Baseline || {}, {
+  preloaderDone: signalPreloaderLeaving,
+});
 
 
 /* -----------------------------------------------------

@@ -33,7 +33,7 @@ import { preloaderLeaving, signalPreloaderLeaving } from "../core/signals.js";
 
 const revealConfig = {
   start: "clamp(top 85%)",   // Scroll-Startpunkt
-  preloaderTimeout: 8000,    // Sicherheitsnetz, falls der Preloader hängt
+  preloaderTimeout: 8000,    // Sicherheitsnetz, falls der Preloader hängt (data-load-timeout)
   letter: { duration: 0.6, each: 0.02, maxStagger: 0.6, ease: "power3.out" },
   lines:  { duration: 0.8, stagger: 0.08, ease: "expo.out" },
   block:  { duration: 0.6, ease: "power3.out" },
@@ -47,7 +47,13 @@ export function initReveal() {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   // Kein Preloader auf der Seite → trigger="preloader" verhält sich wie "load"
-  if (!document.querySelector("[data-load-wrap]")) signalPreloaderLeaving();
+  const loadWrap = document.querySelector("[data-load-wrap]");
+  if (!loadWrap) signalPreloaderLeaving();
+
+  // Sicherheitsnetz: per data-load-timeout auf dem Wrapper überschreibbar
+  const preloaderTimeout =
+    parseInt(loadWrap && loadWrap.getAttribute("data-load-timeout"), 10) ||
+    revealConfig.preloaderTimeout;
 
   // Trigger vom Element oder nächsten Parent lesen
   const getTrigger = (el) => {
@@ -72,7 +78,7 @@ export function initReveal() {
         if (tl.progress() === 0) tl.restart(true); // true = Delay behalten
       };
       preloaderLeaving.then(start);
-      setTimeout(start, revealConfig.preloaderTimeout);
+      setTimeout(start, preloaderTimeout);
       return tl;
     }
 
