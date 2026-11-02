@@ -1,7 +1,7 @@
 /* =====================================================
    Navigation – Hover Underline
 
-   Attribut: underline="true" auf .nav-link-txt bzw.
+   Attribut: underline (ohne Wert, "true" geht weiterhin) auf .nav-link-txt bzw.
              .nav-link-txt-transparent
    Erzeugt eine Linie (.underline-line), die beim Hover
    von links einläuft und nach rechts verschwindet.
@@ -17,7 +17,7 @@ export function initNavUnderline() {
   ];
 
   linkPairs.forEach(([linkClass, textClass]) => {
-    document.querySelectorAll(`.${textClass}[underline="true"]`).forEach((el) => {
+    document.querySelectorAll(`.${textClass}[underline]`).forEach((el) => {
       const line = document.createElement("span");
       line.classList.add("underline-line");
       el.appendChild(line);

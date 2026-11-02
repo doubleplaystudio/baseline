@@ -1,0 +1,48 @@
+/* =====================================================
+   Nav Theme – transparente Navigation über Hero/Video
+   JS: modules/nav-theme.js (Attribute und Ablauf dort)
+
+   Übergänge asymmetrisch:
+     in die Hero  → fast sofort (keine helle Leiste, die über
+                    dem Video ausblendet und aufblitzt)
+     aus der Hero → weiche Blende zurück auf den Default
+   Icons (img, svg) werden per Filter hell, das funktioniert
+   bei einfarbigen Grafiken (Logo, Chevron, Lottie-Icons).
+   ===================================================== */
+
+[data-nav] {
+  --nav-transparent-fg: #fff;
+}
+
+/* Default: weiche Blende zurück (aus der Hero heraus) */
+[data-nav-bar] {
+  transition: background-color 0.4s ease;
+}
+
+/* Nur Nachfahren, nicht der Bereich selbst: sonst würde der
+   Dropdown-Inhalt die helle Farbe erben */
+[data-nav-fg] *:not([data-nav-dropdown], [data-nav-dropdown] *) {
+  transition: color 0.4s ease, filter 0.4s ease, background-color 0.4s ease;
+}
+
+/* Transparent: fast sofort (in die Hero hinein) */
+[data-nav][data-nav-theme="transparent"]:not([data-nav-open]) [data-nav-bar],
+[data-nav][data-nav-theme="transparent"]:not([data-nav-open]) [data-nav-fg] *:not([data-nav-dropdown], [data-nav-dropdown] *) {
+  transition-duration: 0.1s;
+}
+
+/* Leiste transparent */
+[data-nav][data-nav-theme="transparent"]:not([data-nav-open]) [data-nav-bar] {
+  background-color: transparent;
+}
+
+/* Text hell (Dropdown-Inhalt ausgenommen) */
+[data-nav][data-nav-theme="transparent"]:not([data-nav-open]) [data-nav-fg] *:not([data-nav-dropdown], [data-nav-dropdown] *) {
+  color: var(--nav-transparent-fg);
+}
+
+/* Icons hell (Logo, Chevron, Lottie), Dropdown ausgenommen */
+[data-nav][data-nav-theme="transparent"]:not([data-nav-open]) [data-nav-fg] img:not([data-nav-dropdown] *),
+[data-nav][data-nav-theme="transparent"]:not([data-nav-open]) [data-nav-fg] svg:not([data-nav-dropdown] *) {
+  filter: brightness(0) invert(1);
+}

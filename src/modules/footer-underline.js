@@ -1,13 +1,13 @@
 /* =====================================================
    Footer – Hover Underline
 
-   Attribut: underline="true" auf .footer-link
+   Attribut: underline (ohne Wert, "true" geht weiterhin) auf .footer-link
    Gleiche Logik wie die Navigation, aber ohne aktiven Zustand.
    CSS: css/modules/underline.css
    ===================================================== */
 
 export function initFooterUnderline() {
-  const links = document.querySelectorAll('.footer-link[underline="true"]');
+  const links = document.querySelectorAll('.footer-link[underline]');
   if (!links.length) return;
 
   links.forEach((el) => {

@@ -16,10 +16,10 @@ Diese Single Source of Truth wird per jsDelivr in jedes Projekt geladen. Jedes P
 
 ```html
 <!-- Head -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/doubleplaystudio/baseline@1.1.0/dist/baseline.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/doubleplaystudio/baseline@1.2.0/dist/baseline.min.css">
 
 <!-- Footer, nach allen Libraries -->
-<script src="https://cdn.jsdelivr.net/gh/doubleplaystudio/baseline@1.1.0/dist/baseline.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/doubleplaystudio/baseline@1.2.0/dist/baseline.min.js"></script>
 ```
 
 > **Immer eine feste Version angeben** (`@1.0.0`), niemals `@latest` oder `@main`. Sonst kann ein Update für Projekt C unbemerkt Projekt A verändern.
@@ -64,10 +64,11 @@ Ohne Preloader auf der Seite verhält sich `trigger="preloader"` wie `load`.
 
 | Modul | Wichtigste Attribute | Datei |
 |---|---|---|
-| Nav Underline | `underline="true"` auf `.nav-link-txt` / `.nav-link-txt-transparent` | `nav-underline.js` |
-| Footer Underline | `underline="true"` auf `.footer-link` | `footer-underline.js` |
+| Nav Underline | `underline` auf `.nav-link-txt` / `.nav-link-txt-transparent` | `nav-underline.js` |
+| Footer Underline | `underline` auf `.footer-link` | `footer-underline.js` |
+| Nav Theme | `data-nav`, `data-nav-bar`, `data-nav-fg`, `data-nav-dropdown`, `data-nav-transparent` | `nav-theme.js` |
 | Counter | `counter="true"`, `data-count`, `counter-delay`, `counter-trigger="load"`, `counter-tip="true"` | `counter.js` |
-| Stroke | `animate-stroke="true"` auf `.stroke` | `stroke.js` |
+| Stroke | `animate-stroke` | `stroke.js` |
 | Tab Checkbox | Checkbox in `.tab-item` | `tab-checkbox.js` |
 | Forms | `data-form-validate`, `data-validate`, `data-radiocheck-group`, `data-submit` | `forms.js` |
 | Live-Uhr | `data-current-time="Europe/Berlin"` + `-hours`, `-minutes`, `-seconds`, `-timezone` | `current-time.js` |
@@ -77,9 +78,11 @@ Ohne Preloader auf der Seite verhält sich `trigger="preloader"` wie `load`.
 | Modal | `data-modal-target`, `data-modal-name`, `data-modal-group-status`, `data-modal-close` | `modal.js` |
 | Preloader | `data-load-wrap`, `-container`, `-bg`, `-progress`, `-logo`, `-text`, `-reset`, `-mode="custom"`, `-timeout` | `preloader.js` |
 | Copy Email | `.copy-email-button`, `data-copy-email`, `data-copy-email-element` | `copy-email.js` |
-| Page Transition | `.page-transition` | `page-transition.js` |
+| Page Transition | `.page-transition`, optional `data-no-transition` auf Links | `page-transition.js` |
 | Marquee | `data-draggable-marquee-init`, `-collection`, `-list`, `data-duration`, `data-direction` | `marquee.js` |
-| Bouncy Tabs | `data-bouncy-tabs-init`, `-nav`, `-button`, `-indicator`, `-panel` … | `bouncy-tabs.js` |
+| Bouncy Tabs | `data-bouncy-tabs-init`, `-nav`, `-button`, `-indicator`, `-panel`, `-auto` … | `bouncy-tabs.js` |
+
+Attribute ohne Wert (`underline`, `animate-stroke`) funktionieren auch mit dem alten `="true"`.
 
 Die vollständige Doku zu jedem Modul steht im Kopf der jeweiligen Datei in `src/modules/`.
 

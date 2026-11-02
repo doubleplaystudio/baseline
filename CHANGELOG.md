@@ -11,6 +11,24 @@ Zum Zurückrollen in Webflow einfach die vorherige Versionsnummer in Head und Fo
 
 ---
 
+## [1.2.0] – 2026-11-02
+
+### Neu
+- Modul **Nav Theme**: Navigation wird transparent mit heller Schrift, solange eine Section mit `data-nav-transparent` dahinter liegt (z. B. Video-Hero). Ist ein Dropdown oder das Mobile-Menü offen, fällt die Nav auf ihren Default zurück. Steuerung nur über Attribute (`data-nav`, `data-nav-bar`, `data-nav-fg`, `data-nav-dropdown`), Webflow-Interactions bleiben unberührt. Helle Farbe per `--nav-transparent-fg`. Übergänge asymmetrisch: in die Hero fast sofort (kein Aufblitzen), zurück weich. Funktioniert auch mit Snap Scrolling in einem Container
+- Bouncy Tabs: `data-bouncy-tabs-auto` auf dem Wrapper. Sekunden pro Tab, `"false"` oder `"0"` schaltet das Auto-Rotate ab (Default weiterhin 5 s)
+- Page Transition: `data-no-transition` auf einem Link schließt ihn aus
+
+### Verbessert
+- Underline: Attribut `underline` jetzt ohne Wert, `underline="true"` funktioniert weiterhin
+- Stroke: Attribut `animate-stroke` jetzt ohne Wert und ohne Pflicht-Klasse `.stroke`, `animate-stroke="true"` auf `.stroke` funktioniert weiterhin
+
+### Behoben
+- Page Transition startete bei Ankerlinks auf dieselbe Seite (`/#id`, z. B. aus Webflow-Links auf Page Sections). Diese Links, `tel:`, `target="_blank"` und Download-Links lösen jetzt keine Transition mehr aus
+
+Bestehende Seiten verhalten sich unverändert.
+
+---
+
 ## [1.1.0] – 2026-10-25
 
 ### Neu

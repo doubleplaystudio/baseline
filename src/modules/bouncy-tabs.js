@@ -11,8 +11,10 @@
      data-bouncy-tabs-panels     → Wrapper der Panels (optional)
      data-bouncy-tabs-panel      → Inhalt je Tab, gleiche Reihenfolge wie Buttons
      data-active                 → Start-Tab (auf Button)
+     data-bouncy-tabs-auto       → optional auf dem Wrapper: Sekunden pro Tab,
+                                   "false" oder "0" = kein Auto-Rotate (Default 5)
 
-   Auto-Rotate alle 5 s, stoppt bei der ersten Interaktion.
+   Auto-Rotate (Default alle 5 s), stoppt bei der ersten Interaktion.
    Tastatur: Pfeile links/rechts, Home, End.
    Timing anpassen: config unten.
    CSS: css/modules/bouncy-tabs.css
@@ -26,7 +28,7 @@ const config = {
   overshoot: 16,
   cardSquash: 0,
   cardInflate: 0,
-  autoRotate: 5000, // ms
+  autoRotate: 5000, // ms, Default (überschreibbar per data-bouncy-tabs-auto)
 };
 
 export function initBouncyContentTabs() {
@@ -70,11 +72,17 @@ export function initBouncyContentTabs() {
     let autoInterval = null;
     let userInteracted = false;
 
+    // data-bouncy-tabs-auto: Sekunden pro Tab, "false" / "0" = aus
+    const autoAttr = root.getAttribute("data-bouncy-tabs-auto");
+    const autoMs = autoAttr === null || autoAttr === ""
+      ? config.autoRotate
+      : (autoAttr === "false" ? 0 : (parseFloat(autoAttr) || 0) * 1000);
+
     function startAuto() {
-      if (userInteracted) return;
+      if (userInteracted || autoMs <= 0) return;
       autoInterval = setInterval(() => {
         goTo((activeIndex + 1) % buttons.length);
-      }, config.autoRotate);
+      }, autoMs);
     }
 
     function stopAuto() {

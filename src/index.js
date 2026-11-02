@@ -22,6 +22,7 @@ import { signalPreloaderLeaving } from "./core/signals.js";
 
 import { initLenis } from "./modules/lenis.js";
 import { initNavUnderline } from "./modules/nav-underline.js";
+import { initNavTheme } from "./modules/nav-theme.js";
 import { initFooterUnderline } from "./modules/footer-underline.js";
 import { initCounter } from "./modules/counter.js";
 import { initStroke } from "./modules/stroke.js";
@@ -80,6 +81,7 @@ function setup() {
 ----------------------------------------------------- */
 const modules = [
   initNavUnderline,
+  initNavTheme,
   initFooterUnderline,
   initCounter,
   initStroke,

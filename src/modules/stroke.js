@@ -1,12 +1,13 @@
 /* =====================================================
    Stroke – Scroll Animation
 
-   Attribut: animate-stroke="true" auf .stroke
+   Attribut: animate-stroke (ohne Wert, "true" geht weiterhin)
+   Früher zusätzlich an die Klasse .stroke gebunden, jetzt nur noch das Attribut.
    Die Linie zeichnet sich beim Scrollen von links nach rechts.
    ===================================================== */
 
 export function initStroke() {
-  const strokes = document.querySelectorAll('.stroke[animate-stroke="true"]');
+  const strokes = document.querySelectorAll("[animate-stroke]");
   if (!strokes.length) return;
 
   strokes.forEach((stroke) => {
